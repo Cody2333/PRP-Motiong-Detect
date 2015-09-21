@@ -1,0 +1,54 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/count"
+        android:layout_marginTop="70dp"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:text="计步器"
+        android:gravity="center"
+        android:textSize="22sp"
+        android:layout_margin="20dp"
+        android:background="@drawable/selector_home_green" />
+
+    <TextView
+        android:layout_marginTop="50dp"
+        android:id="@+id/checkAction"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:text="人体动作识别"
+        android:gravity="center"
+        android:layout_margin="20dp"
+        android:textSize="22sp"
+        android:background="@drawable/selector_home_yellow" />
+
+    <TextView
+        android:layout_marginTop="50dp"
+        android:id="@+id/auto_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:text="自动检测"
+        android:gravity="center"
+        android:layout_margin="20dp"
+        android:textSize="22sp"
+        android:alpha="0.7"
+
+        android:background="@drawable/selector_home_green" />
+
+    <TextView
+        android:layout_marginTop="50dp"
+        android:id="@+id/setting_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:text="设置"
+        android:gravity="center"
+        android:layout_margin="20dp"
+        android:textSize="22sp"
+        android:alpha="0.7"
+        android:background="@drawable/selector_home_yellow" />
+
+</LinearLayout>
