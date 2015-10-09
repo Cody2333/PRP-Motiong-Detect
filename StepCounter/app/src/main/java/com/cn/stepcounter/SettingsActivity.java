@@ -10,19 +10,15 @@ import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
-/**
- * ??ó???????????
- */
 public class SettingsActivity extends Activity {
 
     public static final String WEIGHT_VALUE = "weight_value";
 
-    public static final String STEP_LENGTH_VALUE = "step_length_value";// ????
+    public static final String STEP_LENGTH_VALUE = "step_length_value";
 
-    public static final String SENSITIVITY_VALUE = "sensitivity_value";// ?????
+    public static final String SENSITIVITY_VALUE = "sensitivity_value";
 
-    public static final String SETP_SHARED_PREFERENCES = "setp_shared_preferences";// ????
-
+    public static final String SETP_SHARED_PREFERENCES = "setp_shared_preferences";
     public static SharedPreferences sharedPreferences;
 
     private Editor editor;
@@ -54,9 +50,7 @@ public class SettingsActivity extends Activity {
 
     }
 
-    /**
-     * SeekBar?????????
-     */
+
     private void listener() {
         sb_sensitivity
                 .setOnSeekBarChangeListener(new OnSeekBarChangeListener() {    // ??????????????
@@ -132,8 +126,7 @@ public class SettingsActivity extends Activity {
 
     private void init() {
         // TODO Auto-generated method stub
-        if (sharedPreferences == null) {    //SharedPreferences??Android???????????????洢??
-            //?????????Щ???????????細????
+        if (sharedPreferences == null) {
             sharedPreferences = getSharedPreferences(SETP_SHARED_PREFERENCES,
                     MODE_PRIVATE);
         }
@@ -145,7 +138,7 @@ public class SettingsActivity extends Activity {
         weight = sharedPreferences.getInt(WEIGHT_VALUE, 50);
 
         sb_sensitivity.setProgress(sensitivity);
-        sb_step_length.setProgress((step_length - 40) / 5);               //?????????????????????
+        sb_step_length.setProgress((step_length - 40) / 5);
         sb_weight.setProgress((weight - 30) / 2);
 
         tv_sensitivity_vlaue.setText(sensitivity + "");
@@ -174,7 +167,6 @@ public class SettingsActivity extends Activity {
                 editor.putInt(WEIGHT_VALUE, weight);
                 editor.commit();
 
-                //Toast.makeText(SettingsActivity.this, "????????", Toast.LENGTH_SHORT).show();
 
                 this.finish();
                 StepDetector.SENSITIVITY = 10 - sensitivity;

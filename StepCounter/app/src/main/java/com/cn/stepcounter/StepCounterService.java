@@ -37,7 +37,6 @@ public class StepCounterService extends Service {
 		detector = new StepDetector(this);
 
 		mSensorManager = (SensorManager) this.getSystemService(SENSOR_SERVICE);
-		// ע�ᴫ������ע�������
 		mSensorManager.registerListener(detector,
 				mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
 				SensorManager.SENSOR_DELAY_NORMAL);

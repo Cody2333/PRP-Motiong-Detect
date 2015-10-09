@@ -1,13 +1,10 @@
 package com.cn.stepcounter;
 
-import com.cn.stepcounter.R;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.Window;
-import android.view.animation.Animation;
 
 
 public class SplashActivity extends Activity {
@@ -19,10 +16,10 @@ public class SplashActivity extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.splash);
 		
-		if (StepCounterService.FLAG || StepDetector.CURRENT_SETP > 0) {// �����Ѿ�������ֱ����ת�����н���
-			Intent intent = new Intent(SplashActivity.this, StepCounterActivity.class); //����һ���µ�Intent��ָ����ǰӦ�ó���������
-																				//��Ҫ������StepActivity��
-			startActivity(intent);												//�������intent��startActivity
+		if (StepCounterService.FLAG || StepDetector.CURRENT_SETP > 0) {
+			Intent intent = new Intent(SplashActivity.this, StepCounterActivity.class);
+																				
+			startActivity(intent);
 			this.finish();
 		} else {
 			new CountDownTimer(2000L, 1000L)
@@ -30,7 +27,6 @@ public class SplashActivity extends Activity {
 				public void onFinish()
 				{
 
-					//�������浭�뵭��Ч��
 					Intent intent = new Intent();
 					intent.setClass(SplashActivity.this, StartActivity.class);
 					startActivity(intent);
