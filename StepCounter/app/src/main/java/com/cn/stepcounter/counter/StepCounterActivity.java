@@ -1,4 +1,4 @@
-package com.cn.stepcounter;
+package com.cn.stepcounter.counter;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -15,8 +15,7 @@ import android.widget.Button;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import com.ant.liao.GifView;
-import com.ant.liao.GifView.GifImageType;
+import com.cn.stepcounter.R;
 
 import java.text.DecimalFormat;
 import java.util.Calendar;
@@ -45,7 +44,6 @@ public class StepCounterActivity extends Activity {
 	private Button btn_start;
 	private Button btn_stop;
 
-	private GifView gifView;
 	private boolean isRun = false;
 
 
@@ -118,20 +116,7 @@ public class StepCounterActivity extends Activity {
 		Bundle extras = getIntent().getExtras(); 
 		isRun = extras.getBoolean("run");
 
-		if(isRun){
-			gifView = (GifView)findViewById(R.id.gif_view);
-			gifView.setGifImageType(GifImageType.COVER);
-			gifView.setShowDimension(100, 100);
-			gifView.setGifImage(R.drawable.walk_gif);
-			gifView.showCover();
 
-		}else{
-			gifView = (GifView)findViewById(R.id.gif_view);
-			gifView.setGifImageType(GifImageType.COVER);
-			gifView.setShowDimension(100, 100);
-			gifView.setGifImage(R.drawable.run_gif);
-			gifView.showCover();
-		}
 
 		if (thread == null) {
 
@@ -306,7 +291,6 @@ public class StepCounterActivity extends Activity {
 		Intent service = new Intent(this, StepCounterService.class);
 		switch (view.getId()) {
 		case R.id.start:
-			gifView.showAnimation();
 			startService(service);
 			btn_start.setEnabled(false);
 			btn_stop.setEnabled(true);
@@ -317,7 +301,6 @@ public class StepCounterActivity extends Activity {
 
 		case R.id.stop:
 			stopService(service);
-			gifView.showCover();
 			if (StepCounterService.FLAG && StepDetector.CURRENT_SETP > 0) {
 				btn_stop.setText(getString(R.string.cancel));
 			} else {

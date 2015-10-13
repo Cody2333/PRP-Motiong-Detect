@@ -1,0 +1,110 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eeeeee"
+    android:orientation="vertical"
+    tools:context="com.cody.app.JiKeApp.AccountSetting.UserInfoMainFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:gravity="center"
+        android:background="#999999"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/touxiang"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="username"
+            android:layout_gravity="center"
+            android:layout_marginTop="0dp"
+            android:textSize="30dp"
+            android:id="@+id/id_username"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/id_change_password"
+        android:layout_width="fill_parent"
+        android:layout_height="52dp"
+
+        android:layout_marginTop="16.0dip"
+        android:background="@drawable/selector_list_blockbg_single"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="horizontal">
+
+        <TextView
+
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+            android:text="@string/persondetail_textview_change_password" />
+
+        <ImageView
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:src="@drawable/open_arrow" />
+    </LinearLayout>
+    <!-- 淇敼绉樺瘑 END -->
+
+    <!-- 淇敼瀵嗕繚鎵嬫満 -->
+    <LinearLayout
+        android:id="@+id/id_change_phone"
+        android:layout_width="fill_parent"
+        android:layout_height="52dp"
+
+        android:layout_marginTop="16.0dip"
+        android:background="@drawable/selector_list_blockbg_single"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+            android:text="@string/persondetail_textview_change_phone" />
+
+        <ImageView
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dip"
+            android:src="@drawable/open_arrow" />
+
+    </LinearLayout>
+    <!-- 淇敼鎵嬫満 END-->
+
+    <!-- 登出按钮 -->
+    <Button
+        android:id="@+id/btn_setting_logout"
+        android:layout_width="fill_parent"
+        android:layout_height="46.0dip"
+        android:layout_marginBottom="16.0dip"
+        android:layout_marginLeft="10.0dip"
+        android:layout_marginRight="10.0dip"
+        android:layout_marginTop="16.0dip"
+        android:background="@drawable/selector_deny_bg"
+        android:text="@string/fragment_right_button_logout" />
+
+</LinearLayout>

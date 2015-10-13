@@ -1,10 +1,13 @@
-package com.cn.stepcounter;
+package com.cn.stepcounter.counter;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.Window;
+
+import com.cn.stepcounter.R;
+import com.cn.stepcounter.login.RegisterActivity;
 
 
 public class SplashActivity extends Activity {
@@ -28,7 +31,7 @@ public class SplashActivity extends Activity {
 				{
 
 					Intent intent = new Intent();
-					intent.setClass(SplashActivity.this, StartActivity.class);
+					intent.setClass(SplashActivity.this, RegisterActivity.class);
 					startActivity(intent);
 					overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
 					finish();

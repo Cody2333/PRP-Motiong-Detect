@@ -1,0 +1,63 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#f5f5f5"
+    tools:context="com.cody.app.JiKeApp.AccountSetting.UserInfoChangePwdFragment">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:background="#ffffff"
+        android:layout_marginBottom="2dp"
+        android:layout_marginTop="20dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/iphone" />
+
+        <EditText
+            android:id="@+id/id_editText_user_password"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:inputType="textPassword"
+            android:hint="@string/fragment_user_info_change_pwd_editText_pwd"></EditText>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:background="#ffffff">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/iphone" />
+
+        <EditText
+            android:id="@+id/id_editText_user_password_again"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:hint="@string/fragment_user_info_change_pwd_editText_pwd_again"
+            android:inputType="textPassword"></EditText>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/id_button_complete"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/selector_home_yellow"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:text="@string/fragment_user_info_change_pwd_button"/>
+
+</LinearLayout>

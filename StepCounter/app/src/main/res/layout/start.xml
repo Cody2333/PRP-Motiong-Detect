@@ -1,54 +1,64 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="8dp"
-    android:orientation="vertical">
+    android:orientation="horizontal"
+    android:padding="0dp">
 
-    <TextView
-        android:id="@+id/count"
-        android:layout_marginTop="70dp"
-        android:layout_width="wrap_content"
-        android:layout_height="80dp"
-        android:text="计步器"
-        android:gravity="center"
-        android:textSize="22sp"
-        android:layout_margin="20dp"
-        android:background="@drawable/selector_home_green" />
 
-    <TextView
-        android:layout_marginTop="50dp"
-        android:id="@+id/checkAction"
-        android:layout_width="wrap_content"
-        android:layout_height="80dp"
-        android:text="人体动作识别"
-        android:gravity="center"
-        android:layout_margin="20dp"
-        android:textSize="22sp"
-        android:background="@drawable/selector_home_yellow" />
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
-    <TextView
-        android:layout_marginTop="50dp"
-        android:id="@+id/auto_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="80dp"
-        android:text="自动检测"
-        android:gravity="center"
-        android:layout_margin="20dp"
-        android:textSize="22sp"
-        android:alpha="0.7"
+        <TextView
+            android:id="@+id/count"
+            style="@style/metro_text_style"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:background="#E51400"
+            android:text="计步器" />
 
-        android:background="@drawable/selector_home_green" />
+        <TextView
+            android:id="@+id/checkAction"
+            style="@style/metro_text_style"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:background="#996600"
+            android:text="人体动作识别" />
 
-    <TextView
-        android:layout_marginTop="50dp"
-        android:id="@+id/setting_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="80dp"
-        android:text="设置"
-        android:gravity="center"
-        android:layout_margin="20dp"
-        android:textSize="22sp"
-        android:alpha="0.7"
-        android:background="@drawable/selector_home_yellow" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/auto_tv"
+            style="@style/metro_text_style"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:background="#00ABA9"
+
+            android:text="我的账户" />
+
+        <TextView
+            android:id="@+id/setting_tv"
+            style="@style/metro_text_style"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:background="#F09609"
+            android:text="设置" />
+
+    </LinearLayout>
+
 
 </LinearLayout>

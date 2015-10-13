@@ -1,12 +1,14 @@
-package com.cn.stepcounter;
+package com.cn.stepcounter.counter;
 
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.cn.stepcounter.R;
+import com.cn.stepcounter.login.UserInfoActivity;
 
 public class StartActivity extends Activity {
 
@@ -63,7 +65,9 @@ public class StartActivity extends Activity {
 		autoView.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				Toast.makeText(StartActivity.this,"working on it",Toast.LENGTH_SHORT).show();
+				//Toast.makeText(StartActivity.this,"working on it",Toast.LENGTH_SHORT).show();
+				Intent intent=new Intent(StartActivity.this, UserInfoActivity.class);
+				startActivity(intent);
 			}
 		});
 

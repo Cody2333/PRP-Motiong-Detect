@@ -50,15 +50,10 @@
                     android:layout_below="@+id/step_counter"
                     android:layout_marginTop="10dip"
                     android:layout_weight="1"
-                    android:textColor="@android:color/white"
+                    android:textColor="@android:color/black"
                     android:textSize="55sp" />
             </RelativeLayout>
 
-            <com.ant.liao.GifView
-                android:id="@+id/gif_view"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginRight="20dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -79,7 +74,7 @@
                 android:onClick="onClick"
                 android:padding="5dip"
                 android:text="@string/start"
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
@@ -93,7 +88,7 @@
                 android:onClick="onClick"
                 android:padding="5dip"
                 android:text="@string/pause"
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
                 android:textSize="25sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -131,7 +126,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:textColor="@android:color/white"
+                android:textColor="@android:color/black"
                 android:textSize="25sp" />
         </LinearLayout>
 
@@ -229,7 +224,7 @@
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:text="@string/daily"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/black" />
 
             <TextView
                 android:id="@id/week_day"
@@ -238,7 +233,7 @@
                 android:layout_column="1"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/black" />
         </TableRow>
 
         <TableRow
@@ -301,7 +296,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/black" />
         </TableRow>
 
         <TableRow
