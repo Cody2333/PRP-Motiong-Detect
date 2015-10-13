@@ -4,45 +4,54 @@ import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
 import android.util.Log;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class StepDetector implements SensorEventListener {
 
+    //如果步行只持续10步以内，则判断为干扰
+    public static int CANCEL_STEP=10;
+    //判断时间间隔为两秒
+    public static int LAST_TIME=10000;
     public static int CURRENT_SETP = 0;
+    public int UNCHECKED_STEP=0;
 
     public static float SENSITIVITY = 0;
+
+    //起始时间戳
     private static long end = 0;
+    private static long v_end = 0;
+    //终止时间戳
     private static long start = 0;
+    private static long v_start = 0;
+
+    private boolean isWalking=false;
+    //加速度传感器的数据
     float X_lateral = 0;
     float Y_longitudinal = 0;
     float Z_vertical = 0;
-    int DELAY_TIME = 5;
-    int count = 0;
-    List<Double> mlengthList = new ArrayList<Double>();
-    Double average = 10.0;
-    Double range = 3.0;
-    Double range_b=1.5;
-    private float mLastValues[] = new float[3 * 2];
-    private float mScale[] = new float[2];
-    private float mYOffset;
 
-    private float mLastDirections[] = new float[3 * 2];
-    private float mLastExtremes[][] = {new float[3 * 2], new float[3 * 2]};
-    private float mLastDiff[] = new float[3 * 2];
-    private int mLastMatch = -1;
+    //用于控制具体频率
+    int DELAY_TIME = 1;
+
+    //计数
+    int count = 0;
+
+    //人体的最短运动间隔
+    public static int MIN_INTERVAL=200;
+
+
+    //调试参数
+    Double average = 10.0;
+    Double range = 1.6;
+    Double range_b=0.9;
+
+
 
 
     public StepDetector(Context context) {
         // TODO Auto-generated constructor stub
         super();
-        int h = 480;
-        mYOffset = h * 0.5f;
-        mScale[0] = -(h * 0.5f * (1.0f / (SensorManager.STANDARD_GRAVITY * 2)));
-        mScale[1] = -(h * 0.5f * (1.0f / (SensorManager.MAGNETIC_FIELD_EARTH_MAX)));
+
         if (SettingsActivity.sharedPreferences == null) {
             SettingsActivity.sharedPreferences = context.getSharedPreferences(
                     SettingsActivity.SETP_SHARED_PREFERENCES,
@@ -50,69 +59,12 @@ public class StepDetector implements SensorEventListener {
         }
         SENSITIVITY = SettingsActivity.sharedPreferences.getInt(
                 SettingsActivity.SENSITIVITY_VALUE, 3);
+
+        Log.e("sensitivity",String.valueOf(SENSITIVITY));
     }
 
-    // public void setSensitivity(float sensitivity) {
-    // SENSITIVITY = sensitivity; // 1.97 2.96 4.44 6.66 10.00 15.00 22.50
-    // // 33.75
-    // // 50.62
-    // }
 
-	// public void onSensorChanged(int sensor, float[] values) {
     @Override
-	public void onSensorChanged(SensorEvent event) {
-		// Log.i(Constant.STEP_SERVER, "StepDetector");
-		Sensor sensor = event.sensor;
-		// Log.i(Constant.STEP_DETECTOR, "onSensorChanged");
-		synchronized (this) {
-			if (sensor.getType() == Sensor.TYPE_ORIENTATION) {
-			} else {
-				int j = (sensor.getType() == Sensor.TYPE_ACCELEROMETER) ? 1 : 0;
-				if (j == 1) {
-					float vSum = 0;
-					for (int i = 0; i < 3; i++) {
-						final float v = mYOffset + event.values[i] * mScale[j];
-						vSum += v;
-					}
-					int k = 0;
-					float v = vSum / 3;
-
-					float direction = (v > mLastValues[k] ? 1: (v < mLastValues[k] ? -1 : 0));
-					if (direction == -mLastDirections[k]) {
-						// Direction changed
-						int extType = (direction > 0 ? 0 : 1); // minumum or
-						// maximum?
-						mLastExtremes[extType][k] = mLastValues[k];
-						float diff = Math.abs(mLastExtremes[extType][k]- mLastExtremes[1 - extType][k]);
-
-						if (diff > SENSITIVITY) {
-							boolean isAlmostAsLargeAsPrevious = diff > (mLastDiff[k] * 2 / 3);
-							boolean isPreviousLargeEnough = mLastDiff[k] > (diff / 3);
-							boolean isNotContra = (mLastMatch != 1 - extType);
-
-							if (isAlmostAsLargeAsPrevious && isPreviousLargeEnough && isNotContra) {
-								end = System.currentTimeMillis();
-								if (end - start > 500) {// ��ʱ�ж�Ϊ����һ��
-									Log.i("StepDetector", "CURRENT_SETP:"
-											+ CURRENT_SETP);
-									CURRENT_SETP++;
-									mLastMatch = extType;
-									start = end;
-								}
-							} else {
-								mLastMatch = -1;
-							}
-						}
-						mLastDiff[k] = diff;
-					}
-					mLastDirections[k] = direction;
-					mLastValues[k] = v;
-				}
-			}
-		}
-	}
-
- /*   @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
 
         if (sensorEvent.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
@@ -123,21 +75,36 @@ public class StepDetector implements SensorEventListener {
 
             count++;
 
-            //中值滤波
             if (count % DELAY_TIME == 0) {
 
+                //计算和加速度
                 Double length = Math.sqrt((X_lateral / (float) DELAY_TIME) * (X_lateral / (float) DELAY_TIME)
                         + (Y_longitudinal / (float) DELAY_TIME) * (Y_longitudinal / (float) DELAY_TIME)
                         + (Z_vertical / (float) DELAY_TIME) * (Z_vertical / (float) DELAY_TIME));
                 //     if (mlengthList.size() < 50) {
                 //         mlengthList.add(length);
                 //      }
-                Log.e("sdf", String.valueOf(length));
                 end = System.currentTimeMillis();
-                if (end - start > 500) {
+                v_end= System.currentTimeMillis();
+                if (end - start > MIN_INTERVAL) {
 
-                    if (length - average > range || average-length>range_b) {
-                        CURRENT_SETP++;
+                    if (length - average > range ) {
+                        if(!isWalking){
+                            UNCHECKED_STEP++;
+                            if(UNCHECKED_STEP>CANCEL_STEP){
+                                if (v_end-v_start>LAST_TIME){
+                                    UNCHECKED_STEP=0;
+
+                                }else{
+                                    isWalking=true;
+                                    CURRENT_SETP+=UNCHECKED_STEP;
+                                    UNCHECKED_STEP=0;
+                                }
+                                v_start=v_end;
+                            }
+                        }else{
+                            CURRENT_SETP++;
+                        }
                         start = end;
                     }
                 }
@@ -147,14 +114,14 @@ public class StepDetector implements SensorEventListener {
             }
 
         }
-         /*   if (mlengthList.size() == 40) {
+          /* if (mlengthList.size() == 40) {
                 Double sum = 0.0;
                 for (Double i : mlengthList) {
                     sum += i;
                 }
                 for (Double j : mlengthList) {
                     end = System.currentTimeMillis();
-                    if (end - start > 500) {
+                    if (end - start > MIN_INTERVAL) {
                         if (j - average > range) {
                             CURRENT_SETP++;CURRENT_SETP++;
                             start = end;
@@ -164,7 +131,7 @@ public class StepDetector implements SensorEventListener {
                 }
             }*/
 
-    //}
+    }
 
 
     @Override

@@ -1,4 +1,4 @@
-package com.cn.stepcounter;
+package com.cn.stepcounter.utils;
 
 import android.app.Activity;
 import android.app.ProgressDialog;

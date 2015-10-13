@@ -7,8 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -105,7 +103,7 @@ public class StepCounterActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		this.setContentView(R.layout.main);  //?????????
+		this.setContentView(R.layout.main);
 
 		if (SettingsActivity.sharedPreferences == null) {
 			SettingsActivity.sharedPreferences = this.getSharedPreferences(
@@ -187,7 +185,7 @@ public class StepCounterActivity extends Activity {
 		stopService(service);
 		StepDetector.CURRENT_SETP = 0;
 		tempTime = timer = 0;
-		tv_timer.setText(getFormatTime(timer));      //???????????????
+		tv_timer.setText(getFormatTime(timer));
 		tv_show_step.setText("0");
 		tv_distance.setText(formatDouble(0.0));
 		tv_calories.setText(formatDouble(0.0));
@@ -239,41 +237,41 @@ public class StepCounterActivity extends Activity {
 
 
 	private void setDate() {
-		Calendar mCalendar = Calendar.getInstance();// ???????Calendar????
-		int weekDay = mCalendar.get(Calendar.DAY_OF_WEEK);// ?????????
-		int month = mCalendar.get(Calendar.MONTH) + 1;// ????·?
-		int day = mCalendar.get(Calendar.DAY_OF_MONTH);// ???????
+		Calendar mCalendar = Calendar.getInstance();
+		int weekDay = mCalendar.get(Calendar.DAY_OF_WEEK);
+		int month = mCalendar.get(Calendar.MONTH) + 1;
+		int day = mCalendar.get(Calendar.DAY_OF_MONTH);
 
 		tv_date.setText(month + getString(R.string.month) + day
-				+ getString(R.string.day));// ??????????
+				+ getString(R.string.day));
 
 		String week_day_str = new String();
 		switch (weekDay) {
-		case Calendar.SUNDAY:// ??????
+		case Calendar.SUNDAY:
 			week_day_str = getString(R.string.sunday);
 			break;
 
-		case Calendar.MONDAY:// ?????
+		case Calendar.MONDAY:
 			week_day_str = getString(R.string.monday);
 			break;
 
-		case Calendar.TUESDAY:// ?????
+		case Calendar.TUESDAY:
 			week_day_str = getString(R.string.tuesday);
 			break;
 
-		case Calendar.WEDNESDAY:// ??????
+		case Calendar.WEDNESDAY:
 			week_day_str = getString(R.string.wednesday);
 			break;
 
-		case Calendar.THURSDAY:// ??????
+		case Calendar.THURSDAY:
 			week_day_str = getString(R.string.thursday);
 			break;
 
-		case Calendar.FRIDAY:// ??????
+		case Calendar.FRIDAY:
 			week_day_str = getString(R.string.friday);
 			break;
 
-		case Calendar.SATURDAY:// ??????
+		case Calendar.SATURDAY:
 			week_day_str = getString(R.string.saturday);
 			break;
 		}
@@ -310,7 +308,7 @@ public class StepCounterActivity extends Activity {
 				btn_stop.setText(getString(R.string.pause));
 				btn_stop.setEnabled(false);
 
-				tv_timer.setText(getFormatTime(timer));      //???????????????
+				tv_timer.setText(getFormatTime(timer));
 
 				tv_show_step.setText("0");
 				tv_distance.setText(formatDouble(0.0));
@@ -333,38 +331,12 @@ public class StepCounterActivity extends Activity {
 
 		String strSecond = ("00" + second)
 				.substring(("00" + second).length() - 2);
-		// ???????λ
 		String strMinute = ("00" + minute)
 				.substring(("00" + minute).length() - 2);
-		// ??????λ
 		String strHour = ("00" + hour).substring(("00" + hour).length() - 2);
 
 		return strHour + ":" + strMinute + ":" + strSecond;
-		// + strMillisecond;
 	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.activity_step, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// TODO Auto-generated method stub
-		switch (item.getItemId()) {
-		case R.id.menu_settings:
-			Intent intent = new Intent(this, SettingsActivity.class);
-			startActivity(intent);
-			break;
-
-		case R.id.ment_information:
-			break;
-		}
-		return super.onOptionsItemSelected(item);
-	}
-
 
 	private void countDistance() {
 		if (StepDetector.CURRENT_SETP % 2 == 0) {

@@ -1,7 +1,9 @@
-package com.cn.stepcounter;
+package com.cn.stepcounter.utils;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+
+import com.cn.stepcounter.R;
 
 /**
  * Created by 科迪 on 2015/7/17.

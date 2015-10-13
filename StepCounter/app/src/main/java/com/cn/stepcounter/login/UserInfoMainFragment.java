@@ -85,7 +85,7 @@ public class UserInfoMainFragment extends Fragment implements View.OnClickListen
         }
     }
 
-    //µÇ³ö
+    //ç™»å‡º
     private void Logout() {
         AVUser.logOut();
         Intent i = new Intent(getActivity(), RegisterActivity.class);

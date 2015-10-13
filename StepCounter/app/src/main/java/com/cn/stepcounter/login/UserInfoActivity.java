@@ -8,17 +8,24 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 
-import com.cn.stepcounter.BaseActivity;
+import com.cn.stepcounter.utils.BaseActivity;
 import com.cn.stepcounter.R;
-import com.cn.stepcounter.TitleView;
+import com.cn.stepcounter.utils.TitleView;
 
 
 public class UserInfoActivity extends BaseActivity {
 
     private Button btnBack;
     private FragmentManager fm;
+    View.OnClickListener btn_back_listener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            onBackPressed();
+        }
+    };
     private FragmentTransaction ft;
     private Fragment fragMain;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,13 +37,6 @@ public class UserInfoActivity extends BaseActivity {
         btnBack.setOnClickListener(btn_back_listener);
     }
 
-    View.OnClickListener btn_back_listener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            onBackPressed();
-        }
-    };
-
     private void initFragment() {
         fragMain = new UserInfoMainFragment();
         ft.add(R.id.id_main_content, fragMain);
@@ -44,8 +44,8 @@ public class UserInfoActivity extends BaseActivity {
     }
 
 
-    private void initView(){
-        TitleView tv = (TitleView)findViewById(R.id.id_title_view);
+    private void initView() {
+        TitleView tv = (TitleView) findViewById(R.id.id_title_view);
         btnBack = tv.getLeftButton();
         tv.hideRightButton();
         tv.setTitleText(activity.getString(R.string.persondetail_title_text));
@@ -56,7 +56,7 @@ public class UserInfoActivity extends BaseActivity {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) { //°´ÏÂµÄÈç¹ûÊÇBACK£¬Í¬Ê±Ã»ÓĞÖØ¸´
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) { //æŒ‰ä¸‹çš„å¦‚æœæ˜¯BACKï¼ŒåŒæ—¶æ²¡æœ‰é‡å¤
 
             onBackPressed();
             return true;
@@ -68,8 +68,7 @@ public class UserInfoActivity extends BaseActivity {
     public void onBackPressed() {
         if (fm.findFragmentById(R.id.id_main_content) instanceof UserInfoMainFragment) {
             this.finish();
-        }
-        else {
+        } else {
             fm.popBackStack();
         }
     }

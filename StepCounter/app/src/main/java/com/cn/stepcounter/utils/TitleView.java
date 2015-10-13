@@ -1,4 +1,4 @@
-package com.cn.stepcounter;
+package com.cn.stepcounter.utils;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+
+import com.cn.stepcounter.R;
 
 /**
  * Created by 科迪 on 2015/4/27.

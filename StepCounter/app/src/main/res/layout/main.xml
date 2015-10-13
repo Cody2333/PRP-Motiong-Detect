@@ -23,24 +23,20 @@
             android:layout_marginBottom="5dip"
             android:layout_marginTop="5dip"
             android:background="@drawable/shape"
-            android:orientation="horizontal"
+            android:orientation="vertical"
+            android:layout_gravity="center"
             android:paddingBottom="15dip"
             android:paddingTop="15dip"
             android:weightSum="2" >
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:layout_centerHorizontal="true"
-                android:layout_marginLeft="60dip"
-                android:layout_weight="1" >
-"
+
 
                 <TextView
                     android:id="@+id/step_counter"
                     style="@style/small_text_style"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:text="@string/step_number" />
 
                 <TextView
@@ -49,10 +45,10 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/step_counter"
                     android:layout_marginTop="10dip"
-                    android:layout_weight="1"
-                    android:textColor="@android:color/black"
-                    android:textSize="55sp" />
-            </RelativeLayout>
+                    android:layout_gravity="center"
+                    android:textColor="@android:color/holo_blue_bright"
+                    android:textSize="80sp" />
+
 
         </LinearLayout>
 
@@ -75,8 +71,7 @@
                 android:padding="5dip"
                 android:text="@string/start"
                 android:textColor="@android:color/black"
-                android:textSize="25sp"
-                android:textStyle="bold" />
+                android:textSize="25sp" />
 
             <Button
                 android:id="@id/stop"
@@ -89,8 +84,7 @@
                 android:padding="5dip"
                 android:text="@string/pause"
                 android:textColor="@android:color/black"
-                android:textSize="25sp"
-                android:textStyle="bold" />
+                android:textSize="25sp" />
         </LinearLayout>
     </LinearLayout>
 
@@ -136,6 +130,7 @@
             android:layout_weight="3"
             android:paddingLeft="5dip"
             android:paddingRight="5dip"
+
             android:stretchColumns="1" >
 
             <TableRow
@@ -200,6 +195,7 @@
     </LinearLayout>
 
     <TableLayout
+        android:visibility="gone"
         android:id="@id/show_daily"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -238,6 +234,7 @@
 
         <TableRow
             android:layout_width="match_parent"
+            android:visibility="gone"
             android:layout_height="wrap_content"
             android:paddingLeft="15dip" >
 

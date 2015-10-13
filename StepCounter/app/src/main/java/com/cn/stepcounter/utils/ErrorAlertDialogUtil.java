@@ -1,8 +1,10 @@
-package com.cn.stepcounter;
+package com.cn.stepcounter.utils;
 
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+
+import com.cn.stepcounter.R;
 
 /**
  * Created by 科迪 on 2015/8/10.

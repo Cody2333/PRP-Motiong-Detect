@@ -13,11 +13,11 @@ import com.avos.avoscloud.AVAnalytics;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.LogInCallback;
-import com.cn.stepcounter.BaseActivity;
-import com.cn.stepcounter.ErrorAlertDialogUtil;
-import com.cn.stepcounter.ProgressDialogUtil;
+import com.cn.stepcounter.utils.BaseActivity;
+import com.cn.stepcounter.utils.ErrorAlertDialogUtil;
+import com.cn.stepcounter.utils.ProgressDialogUtil;
 import com.cn.stepcounter.R;
-import com.cn.stepcounter.TitleView;
+import com.cn.stepcounter.utils.TitleView;
 import com.cn.stepcounter.counter.StartActivity;
 
 public class LogInActivity extends BaseActivity {

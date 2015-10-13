@@ -19,10 +19,10 @@ import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.LogInCallback;
 import com.avos.avoscloud.RequestMobileCodeCallback;
-import com.cn.stepcounter.BaseActivity;
-import com.cn.stepcounter.ProgressDialogUtil;
+import com.cn.stepcounter.utils.BaseActivity;
+import com.cn.stepcounter.utils.ProgressDialogUtil;
 import com.cn.stepcounter.R;
-import com.cn.stepcounter.TitleView;
+import com.cn.stepcounter.utils.TitleView;
 import com.cn.stepcounter.counter.StartActivity;
 
 

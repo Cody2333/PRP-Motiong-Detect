@@ -41,7 +41,6 @@ public class StepCounterService extends Service {
 				mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
 				SensorManager.SENSOR_DELAY_NORMAL);
 
-		// ��Դ�������
 		mPowerManager = (PowerManager) this
 				.getSystemService(Context.POWER_SERVICE);
 		mWakeLock = mPowerManager.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK
@@ -53,7 +52,7 @@ public class StepCounterService extends Service {
 	public void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
-		FLAG = false;// ����ֹͣ
+		FLAG = false;
 		if (detector != null) {
 			mSensorManager.unregisterListener(detector);
 		}

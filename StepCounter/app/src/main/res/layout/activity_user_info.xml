@@ -6,7 +6,7 @@
     android:background="#eeeeee">
 
 
-    <com.cn.stepcounter.TitleView
+    <com.cn.stepcounter.utils.TitleView
         android:layout_width="fill_parent"
         android:layout_height="45dp"
         android:visibility="gone"
